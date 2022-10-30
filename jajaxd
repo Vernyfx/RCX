@@ -1,0 +1,1144 @@
+
+local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
+
+local Window = Rayfield:CreateWindow({
+	Name = "VernyHub",
+	LoadingTitle = "Rebirth Champions X by VernyFX",
+	LoadingSubtitle = "by Sirius",
+	ConfigurationSaving = {
+		Enabled = true,
+		FileName = "Verny Hub, Rebirth Champs X"
+	},
+	KeySystem = true, -- Set this to true to use our key system
+	KeySettings = {
+		Title = "Verny Hub",
+		Subtitle = "Key System",
+		Note = "Join the discord https://discord.gg/vEQDXpeX)",
+		Key = "RogeIsSexy"
+	}
+})
+
+local Tab = Window:CreateTab("Main")
+
+local Toggle = Tab:CreateToggle({
+	Name = "Auto Clicker",
+	CurrentValue = false,
+	Flag = "Auto Click",
+	Callback = function(ACValue)
+        _G.autoclick = ACValue;
+	end,
+})
+
+task.spawn(function()
+    while wait() do
+        if _G.autoclick then
+            game:GetService("ReplicatedStorage").Events.Click3:FireServer()
+            wait()
+        end
+    end
+end)
+
+local rebsTable = {}
+
+for i=1,80 do
+    table.insert(rebsTable,i)
+end
+
+local Dropdown = Tab:CreateDropdown({
+	Name = "Select Rebirth Option",
+	Options = rebsTable,
+	CurrentOption = " ",
+	Flag = "RebirthDrop",
+	Callback = function(RDValue)
+        _G.rebdrop = RDValue;
+	end,
+})
+
+local Toggle = Tab:CreateToggle({
+	Name = "Auto Rebirth",
+	CurrentValue = false,
+	Flag = "RebirthToggle",
+	Callback = function(ARValue)
+        _G.autoreb = ARValue;
+	end,
+})
+
+task.spawn(function()
+    while wait() do
+        if _G.autoreb then
+            if _G.rebdrop ~= nil then
+                game:GetService("ReplicatedStorage").Events.Rebirth:FireServer(_G.rebdrop)
+            end
+        end
+    end
+end)
+
+local Button = Tab:CreateButton({
+	Name = "Load Confing",
+	Callback = function()
+		Rayfield:LoadConfiguration()
+	end,
+})
+
+local Tab = Window:CreateTab("Halloween!!!")
+
+local pumpkins = game:GetService("Workspace").Scripts.PumpkinsCollect.SpawnPoints:GetChildren()
+
+local hrp = game.Players.LocalPlayer.Character.HumanoidRootPart
+
+local storage = game:GetService("Workspace").Scripts.PumpkinsCollect.Storage:GetDescendants()
+
+local ph = game.Players.LocalPlayer.Character.Head
+
+
+local Toggle = Tab:CreateToggle({
+	Name = "Auto Collect Pumpkins",
+	CurrentValue = false,
+	Flag = "AutoPumpkins",
+	Callback = function(APPValue)
+        _G.autopumpkins = APPValue;
+	end,
+})
+
+local Button = Tab:CreateButton({
+	Name = "Collect All Pumpkins",
+	Callback = function()
+        task.spawn(function()
+            while wait() do
+                         if _G.autopumpkins then
+                                    for i,v in ipairs(storage) do
+                                    if v.Name == "main" then
+                                hrp.CFrame = v.CFrame
+                            wait(0.1)
+                        end
+                    end
+                end
+            end
+        end)
+	end,
+})
+
+local Toggle = Tab:CreateToggle({
+	Name = "Auto Buy Halloween Click Upgrade",
+	CurrentValue = false,
+	Flag = "AutoHalloweenClick",
+	Callback = function(AHCValue)
+        _G.autohalclick = AHCValue;
+	end,
+})
+
+task.spawn(function()
+    while wait() do
+        if _G.autohalclick then
+            game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer("ClickMultiplier","halloween")
+            wait(0.3)
+        end
+    end
+end)
+
+
+local Toggle = Tab:CreateToggle({
+	Name = "Auto Buy Halloween Hatch Speed Upgrade",
+	CurrentValue = false,
+	Flag = "AutoHalloweenHatch",
+	Callback = function(AHHValue)
+        _G.autohalhatch = AHHValue;
+	end,
+})
+
+task.spawn(function()
+    while wait() do
+        if _G.autohalhatch then
+            game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer("HatchSpeed","halloween")
+            wait(0.3)
+        end
+    end
+end)
+
+
+
+local Toggle = Tab:CreateToggle({
+	Name = "Auto Buy Halloween Bank Upgrade",
+	CurrentValue = false,
+	Flag = "AutoHalloweenBank",
+	Callback = function(AHBValue)
+        _G.autohalbank = AHBValue;
+	end,
+})
+
+task.spawn(function()
+    while wait() do
+        if _G.autohalbank then
+            game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer("BankSlots","halloween")
+            wait(0.3)
+        end
+    end
+end)
+
+
+
+local Toggle = Tab:CreateToggle({
+	Name = "Auto Buy Halloween Luck Upgrade",
+	CurrentValue = false,
+	Flag = "AutoHalloweenLuck",
+	Callback = function(AHLValue)
+        _G.autohalluck = AHLValue;
+	end,
+})
+
+task.spawn(function()
+    while wait() do
+        if _G.autohalluck then
+            game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer("LuckMultiplier","halloween")
+            wait(0.3)
+        end
+    end
+end)
+
+
+
+local Toggle = Tab:CreateToggle({
+	Name = "Auto Buy Halloween Multi Upgrade",
+	CurrentValue = false,
+	Flag = "AutoHalloweenMulti",
+	Callback = function(AHMValue)
+        _G.autohalmulti = AHMValue;
+	end,
+})
+
+task.spawn(function()
+    while wait() do
+        if _G.autohalmulti then
+            game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer("PumpkinsMultiplier","halloween")
+            wait(0.3)
+        end
+    end
+end)
+
+
+
+local Toggle = Tab:CreateToggle({
+	Name = "Auto Buy Halloween Pet Equip Upgrade",
+	CurrentValue = false,
+	Flag = "AutoHalloweenPetEq",
+	Callback = function(AHPValue)
+        _G.autohalpet = AHPValue;
+	end,
+})
+
+task.spawn(function()
+    while wait() do
+        if _G.autohalpet then
+            game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer("PetEquip","halloween")
+            wait(0.3)
+        end
+    end
+end)
+
+local Tab = Window:CreateTab("Auto Amulets")
+
+local Label = Tab:CreateLabel("This will Teleport to every Spider every 10 second")
+
+local Label = Tab:CreateLabel("But you have to press E to collect them BUT only if u font have Synapse x")
+
+local Button = Tab:CreateButton({
+	Name = "Auto All Amulet",
+	Callback = function()
+		hrp.CFrame = game:GetService("Workspace").Scripts.Amulets.Collect.Space[1]["Meshes/mars1 (1)"].CFrame * CFrame.new(0,2,0)
+        wait(2)
+        fireproximityprompt(game:GetService("Workspace").Scripts.Amulets.Collect.Space[1].ProximityPrompt)
+        wait(3)
+        hrp.CFrame = game:GetService("Workspace").Scripts.Amulets.Collect.Space[2]["Meshes/mars1 (1)"].CFrame * CFrame.new(0,2,0)
+        wait(2)
+        fireproximityprompt(game:GetService("Workspace").Scripts.Amulets.Collect.Space[2].ProximityPrompt)
+        wait(3)
+        hrp.CFrame = game:GetService("Workspace").Scripts.Amulets.Collect.Space[3]["Meshes/mars1 (1)"].CFrame * CFrame.new(0,2,0)
+        wait(2)
+        fireproximityprompt(game:GetService("Workspace").Scripts.Amulets.Collect.Space[3].ProximityPrompt)
+        wait(3)
+        hrp.CFrame = game:GetService("Workspace").Scripts.Amulets.Collect.Space[4]["Meshes/mars1 (1)"].CFrame * CFrame.new(0,2,0)
+        wait(2)
+        fireproximityprompt(game:GetService("Workspace").Scripts.Amulets.Collect.Space[4].ProximityPrompt)
+        wait(3)
+        hrp.CFrame = game:GetService("Workspace").Scripts.Amulets.Collect.Space[5]["Meshes/mars1 (1)"].CFrame * CFrame.new(0,2,0)
+        wait(2)
+        fireproximityprompt(game:GetService("Workspace").Scripts.Amulets.Collect.Space[5].ProximityPrompt)
+        wait(3)
+        hrp.CFrame = game:GetService("Workspace").Scripts.Amulets.Collect.Space[6]["Meshes/mars1 (1)"].CFrame * CFrame.new(0,2,0)
+        wait(2)
+        fireproximityprompt(game:GetService("Workspace").Scripts.Amulets.Collect.Space[6].ProximityPrompt)
+        wait(3)
+        hrp.CFrame = game:GetService("Workspace").Scripts.Amulets.Collect.Space[7]["Meshes/mars1 (1)"].CFrame * CFrame.new(0,2,0)
+        wait(2)
+        fireproximityprompt(game:GetService("Workspace").Scripts.Amulets.Collect.Space[7].ProximityPrompt)
+        wait(3)
+        hrp.CFrame = game:GetService("Workspace").Scripts.Amulets.Collect.Space[8]["Meshes/mars1 (1)"].CFrame * CFrame.new(0,2,0)
+        wait(2)
+        fireproximityprompt(game:GetService("Workspace").Scripts.Amulets.Collect.Space[8].ProximityPrompt)
+        wait(3)
+        game:GetService("ReplicatedStorage").Events.CraftAmulet:FireServer("Space")
+        wait(5)
+        hrp.CFrame = game:GetService("Workspace").Scripts.Amulets.Collect.Forest[1]["Meshes/petki"].CFrame * CFrame.new(0,2,0)
+        wait(2)
+        fireproximityprompt(game:GetService("Workspace").Scripts.Amulets.Collect.Forest[1].ProximityPrompt)
+        wait(3)
+        hrp.CFrame = game:GetService("Workspace").Scripts.Amulets.Collect.Forest[2].main.CFrame * CFrame.new(0,2,0)
+        wait(2)
+        fireproximityprompt(game:GetService("Workspace").Scripts.Amulets.Collect.Forest[2].ProximityPrompt)
+        wait(3)
+        hrp.CFrame = game:GetService("Workspace").Scripts.Amulets.Collect.Forest[3].main.CFrame * CFrame.new(0,2,0)
+        wait(2)
+        fireproximityprompt(game:GetService("Workspace").Scripts.Amulets.Collect.Forest[3].ProximityPrompt)
+        wait(3)
+        hrp.CFrame = game:GetService("Workspace").Scripts.Amulets.Collect.Forest[4].main.CFrame * CFrame.new(0,2,0)
+        wait(2)
+        fireproximityprompt(game:GetService("Workspace").Scripts.Amulets.Collect.Forest[4].ProximityPrompt)
+        wait(3)
+        hrp.CFrame = game:GetService("Workspace").Scripts.Amulets.Collect.Forest[5].main.CFrame * CFrame.new(0,2,0)
+        wait(2)
+        fireproximityprompt(game:GetService("Workspace").Scripts.Amulets.Collect.Forest[5].ProximityPrompt)
+        wait(3)
+        hrp.CFrame = game:GetService("Workspace").Scripts.Amulets.Collect.Forest[6].main.CFrame * CFrame.new(0,2,0)
+        wait(2)
+        fireproximityprompt(game:GetService("Workspace").Scripts.Amulets.Collect.Forest[6].ProximityPrompt)
+        wait(3)
+        hrp.CFrame = game:GetService("Workspace").Scripts.Amulets.Collect.Forest[7].main.CFrame * CFrame.new(0,2,0)
+        wait(2)
+        fireproximityprompt(game:GetService("Workspace").Scripts.Amulets.Collect.Forest[7].ProximityPrompt)
+        wait(3)
+        hrp.CFrame = game:GetService("Workspace").Scripts.Amulets.Collect.Forest[8].main.CFrame * CFrame.new(0,2,0)
+        wait(2)
+        fireproximityprompt(game:GetService("Workspace").Scripts.Amulets.Collect.Forest[8].ProximityPrompt)
+        wait(3)
+        game:GetService("ReplicatedStorage").Events.CraftAmulet:FireServer("Forest")
+        wait(5)
+        hrp.CFrame = game:GetService("Workspace").Scripts.Amulets.Collect.Aqua[1].main.CFrame * CFrame.new(0,2,0)
+        wait(2)
+        fireproximityprompt(game:GetService("Workspace").Scripts.Amulets.Collect.Aqua[1].ProximityPrompt)
+        wait(3)
+        hrp.CFrame = game:GetService("Workspace").Scripts.Amulets.Collect.Aqua[2].main.CFrame * CFrame.new(0,2,0)
+        wait(2)
+        fireproximityprompt(game:GetService("Workspace").Scripts.Amulets.Collect.Aqua[2].ProximityPrompt)
+        wait(3)
+        hrp.CFrame = game:GetService("Workspace").Scripts.Amulets.Collect.Aqua[3].main.CFrame * CFrame.new(0,2,0)
+        wait(2)
+        fireproximityprompt(game:GetService("Workspace").Scripts.Amulets.Collect.Aqua[3].ProximityPrompt)
+        wait(3)
+        hrp.CFrame = game:GetService("Workspace").Scripts.Amulets.Collect.Aqua[4].main.CFrame * CFrame.new(0,2,0)
+        wait(2)
+        fireproximityprompt(game:GetService("Workspace").Scripts.Amulets.Collect.Aqua[4].ProximityPrompt)
+        wait(3)
+        hrp.CFrame = game:GetService("Workspace").Scripts.Amulets.Collect.Aqua[5].main.CFrame * CFrame.new(0,2,0)
+        wait(2)
+        fireproximityprompt(game:GetService("Workspace").Scripts.Amulets.Collect.Aqua[5].ProximityPrompt)
+        wait(3)
+        hrp.CFrame = game:GetService("Workspace").Scripts.Amulets.Collect.Aqua[6].main.CFrame * CFrame.new(0,2,0)
+        wait(2)
+        fireproximityprompt(game:GetService("Workspace").Scripts.Amulets.Collect.Aqua[6].ProximityPrompt)
+        wait(3)
+        hrp.CFrame = game:GetService("Workspace").Scripts.Amulets.Collect.Aqua[7].main.CFrame * CFrame.new(0,2,0)
+        wait(2)
+        fireproximityprompt(game:GetService("Workspace").Scripts.Amulets.Collect.Aqua[7].ProximityPrompt)
+        wait(3)
+        hrp.CFrame = game:GetService("Workspace").Scripts.Amulets.Collect.Aqua[8].main.CFrame * CFrame.new(0,2,0)
+        wait(2)
+        fireproximityprompt(game:GetService("Workspace").Scripts.Amulets.Collect.Aqua[8].ProximityPrompt)
+        wait(3)
+        game:GetService("ReplicatedStorage").Events.CraftAmulet:FireServer("Aqua")
+        wait(5)
+        hrp.CFrame = game:GetService("Workspace").Scripts.Amulets.Collect.Halloween[1].main.CFrame * CFrame.new(0,2,0)
+        wait(2)
+        fireproximityprompt(game:GetService("Workspace").Scripts.Amulets.Collect.Halloween[1].ProximityPrompt)
+        wait(3)
+        hrp.CFrame = game:GetService("Workspace").Scripts.Amulets.Collect.Halloween[2].main.CFrame * CFrame.new(0,2,0)
+        wait(2)
+        fireproximityprompt(game:GetService("Workspace").Scripts.Amulets.Collect.Halloween[2].ProximityPrompt)
+        wait(3)
+        hrp.CFrame = game:GetService("Workspace").Scripts.Amulets.Collect.Halloween[3].main.CFrame * CFrame.new(0,2,0)
+        wait(2)
+        fireproximityprompt(game:GetService("Workspace").Scripts.Amulets.Collect.Halloween[3].ProximityPrompt)
+        wait(3)
+        hrp.CFrame = game:GetService("Workspace").Scripts.Amulets.Collect.Halloween[4].main.CFrame * CFrame.new(0,2,0)
+        wait(2)
+        fireproximityprompt(game:GetService("Workspace").Scripts.Amulets.Collect.Halloween[4].ProximityPrompt)
+        wait(3)
+        hrp.CFrame = game:GetService("Workspace").Scripts.Amulets.Collect.Halloween[5].main.CFrame * CFrame.new(0,2,0)
+        wait(2)
+        fireproximityprompt(game:GetService("Workspace").Scripts.Amulets.Collect.Halloween[5].ProximityPrompt)
+        wait(3)
+        hrp.CFrame = game:GetService("Workspace").Scripts.Amulets.Collect.Halloween[6].main.CFrame * CFrame.new(0,2,0)
+        wait(2)
+        fireproximityprompt(game:GetService("Workspace").Scripts.Amulets.Collect.Halloween[6].ProximityPrompt)
+        wait(3)
+        hrp.CFrame = game:GetService("Workspace").Scripts.Amulets.Collect.Halloween[7].main.CFrame * CFrame.new(0,2,0)
+        wait(2)
+        fireproximityprompt(game:GetService("Workspace").Scripts.Amulets.Collect.Halloween[7].ProximityPrompt)
+        wait(3)
+        hrp.CFrame = game:GetService("Workspace").Scripts.Amulets.Collect.Halloween[8].main.CFrame * CFrame.new(0,2,0)
+        wait(2)
+        fireproximityprompt(game:GetService("Workspace").Scripts.Amulets.Collect.Halloween[8].ProximityPrompt)
+        wait(3)
+        game:GetService("ReplicatedStorage").Events.CraftAmulet:FireServer("Halloween")
+        wait(2)
+        hrp.CFrame = game:GetService("Workspace").Maps.Spawn.Paths.f.CFrame
+	end,
+})
+
+
+
+local Tab = Window:CreateTab("Auto Egg")
+
+local eggs = game:GetService("Workspace").Scripts.Eggs:GetChildren()
+
+local eggsTable = {}
+
+for i,v in ipairs(eggs) do
+    if v:IsA("Model") then
+        table.insert(eggsTable, v.Name)
+    end
+end
+
+local Dropdown = Tab:CreateDropdown({
+	Name = "Select Egg",
+	Options = eggsTable,
+	CurrentOption = " ",
+	Flag = "EggsDropdown", 
+	Callback = function(EDValue)
+        _G.selectegg = EDValue;
+	end,
+})
+
+local Dropdown = Tab:CreateDropdown({
+	Name = "Select Egg Hatches",
+	Options = {"Single","Triple"},
+	CurrentOption = " ",
+	Flag = "EggsDropdownSelect",
+	Callback = function(SEValue)
+        _G.eggopen = SEValue;
+	end,
+})
+
+local Toggle = Tab:CreateToggle({
+	Name = "Auto Open Eggs",
+	CurrentValue = false,
+	Flag = "AutoOpenEggs", 
+	Callback = function(AUEValue)
+        _G.autoeggs = AUEValue;
+	end,
+})
+
+task.spawn(function()
+    while wait() do
+        if _G.eggopen then
+            if _G.autoeggs then
+                if _G.selectegg ~= nil then
+                    game:GetService("ReplicatedStorage").Functions.Unbox:InvokeServer(_G.selectegg,_G.eggopen)
+                end
+            end
+        end
+    end
+end)
+
+local Tab = Window:CreateTab("Chests")
+
+local chests = game:GetService("Workspace").Scripts.Chests:GetDescendants()
+
+
+
+
+local Toggle = Tab:CreateToggle({
+	Name = "Auto Collect Chest",
+	CurrentValue = false,
+	Flag = "AutoChest",
+	Callback = function(CHValue)
+        _G.autochest = CHValue;
+	end,
+})
+
+task.spawn(function()
+    while wait() do
+        if _G.autochest then
+            wait(1)
+            for i,v in ipairs(chests) do
+                if v.Name == "TouchInterest" and v.Parent then
+                    firetouchinterest(ph, v.Parent, 0)
+                    wait(0.1)
+                    firetouchinterest(ph, v.Parent, 1)
+                end
+            end
+        end
+    end
+end)
+
+local Tab = Window:CreateTab("Upgrades")
+
+local Toggle = Tab:CreateToggle({
+	Name = "Auto Buy Click Upgrade",
+	CurrentValue = false,
+	Flag = "AutoUpg1",
+	Callback = function(AUPG1)
+        _G.autoupg1 = AUPG1;
+	end,
+})
+
+task.spawn(function()
+    while wait() do
+        if _G.autoupg1 then
+            game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer("ClickMultiplier")
+            wait(0.1)
+        end
+    end
+end)
+
+local Toggle = Tab:CreateToggle({
+	Name = "Auto Buy Rebirth Upgrade",
+	CurrentValue = false,
+	Flag = "AutoUpg2",
+	Callback = function(AUPG2)
+        _G.autoupg2 = AUPG2;
+	end,
+})
+
+task.spawn(function()
+    while wait() do
+        if _G.autoupg2 then
+            game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer("RebirthButtons")
+            wait(0.1)
+        end
+    end
+end)
+
+
+local Toggle = Tab:CreateToggle({
+	Name = "Auto Buy WalkSpeed Upgrade",
+	CurrentValue = false,
+	Flag = "AutoUpg3",
+	Callback = function(AUPG3)
+        _G.autoupg3 = AUPG3;
+	end,
+})
+
+task.spawn(function()
+    while wait() do
+        if _G.autoupg3 then
+            game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer("WalkSpeed")
+            wait(0.1)
+        end
+    end
+end)
+
+
+
+local Toggle = Tab:CreateToggle({
+	Name = "Auto Buy Gems Upgrade",
+	CurrentValue = false,
+	Flag = "AutoUpg4",
+	Callback = function(AUPG4)
+        _G.autoupg4 = AUPG4;
+	end,
+})
+
+task.spawn(function()
+    while wait() do
+        if _G.autoupg4 then
+            game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer("GemsMultiplier")
+            wait(0.1)
+        end
+    end
+end)
+
+
+
+local Toggle = Tab:CreateToggle({
+	Name = "Auto Buy PetEquip Upgrade",
+	CurrentValue = false,
+	Flag = "AutoUpg5",
+	Callback = function(AUPG5)
+        _G.autoupg5 = AUPG5;
+	end,
+})
+
+task.spawn(function()
+    while wait() do
+        if _G.autoupg5 then
+            game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer("PetEquip")
+            wait(0.1)
+        end
+    end
+end)
+
+
+
+local Toggle = Tab:CreateToggle({
+	Name = "Auto Buy Pet Storage Upgrade",
+	CurrentValue = false,
+	Flag = "AutoUpg6",
+	Callback = function(AUPG6)
+        _G.autoupg6 = AUPG6;
+	end,
+})
+
+task.spawn(function()
+    while wait() do
+        if _G.autoupg6 then
+            game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer("PetStorage")
+            wait(0.1)
+        end
+    end
+end)
+
+
+
+local Toggle = Tab:CreateToggle({
+	Name = "Auto Buy Luck Upgrade",
+	CurrentValue = false,
+	Flag = "AutoUpg7",
+	Callback = function(AUPG7)
+        _G.autoupg7 = AUPG7;
+	end,
+})
+
+task.spawn(function()
+    while wait() do
+        if _G.autoupg7 then
+            game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer("LuckMultiplier")
+            wait(0.1)
+        end
+    end
+end)
+
+
+
+local Toggle = Tab:CreateToggle({
+	Name = "Auto Buy Faster Clicker Upgrade",
+	CurrentValue = false,
+	Flag = "AutoUpg8",
+	Callback = function(AUPG8)
+        _G.autoupg8 = AUPG8;
+	end,
+})
+
+task.spawn(function()
+    while wait() do
+        if _G.autoupg8 then
+            game:GetService("ReplicatedStorage").Functions.Upgrade:InvokeServer("FasterFreeAutoClicker")
+            wait(0.1)
+        end
+    end
+end)
+
+local Tab = Window:CreateTab("Season Pass")
+
+local Toggle = Tab:CreateToggle({
+	Name = "Auto Collect Free Pass",
+	CurrentValue = false,
+	Flag = "AutoFreePass",
+	Callback = function(FSValue)
+        _G.freepass = FSValue;
+	end,
+})
+
+task.spawn(function()
+    while wait() do
+        if _G.freepass then
+            game:GetService("ReplicatedStorage").Events.Season:FireServer("Free",1)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Events.Season:FireServer("Free",2)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Events.Season:FireServer("Free",3)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Events.Season:FireServer("Free",4)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Events.Season:FireServer("Free",5)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Events.Season:FireServer("Free",6)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Events.Season:FireServer("Free",7)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Events.Season:FireServer("Free",8)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Events.Season:FireServer("Free",9)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Events.Season:FireServer("Free",10)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Events.Season:FireServer("Free",11)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Events.Season:FireServer("Free",12)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Events.Season:FireServer("Free",13)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Events.Season:FireServer("Free",14)
+            wait(0.5)
+        end
+    end
+end)
+
+local Toggle = Tab:CreateToggle({
+	Name = "Auto Collect Premium Pass",
+	CurrentValue = false,
+	Flag = "AutoPremiumPass",
+	Callback = function(PSValue)
+        _G.premiumpass = PSValue;
+	end,
+})
+
+task.spawn(function()
+    while wait() do
+        if _G.premiumpass then
+            game:GetService("ReplicatedStorage").Events.Season:FireServer("Premium",1)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Events.Season:FireServer("Premium",2)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Events.Season:FireServer("Premium",3)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Events.Season:FireServer("Premium",4)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Events.Season:FireServer("Premium",5)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Events.Season:FireServer("Premium",6)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Events.Season:FireServer("Premium",7)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Events.Season:FireServer("Premium",8)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Events.Season:FireServer("Premium",9)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Events.Season:FireServer("Premium",10)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Events.Season:FireServer("Premium",11)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Events.Season:FireServer("Premium",12)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Events.Season:FireServer("Premium",13)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Events.Season:FireServer("Premium",14)
+            wait(0.5)
+        end
+    end
+end)
+
+local Label = Tab:CreateLabel("Halloween")
+
+local Toggle = Tab:CreateToggle({
+	Name = "Auto Claim Halloween Free pass",
+	CurrentValue = false,
+	Flag = "AutoHalFreePass",
+	Callback = function(HFPValue)
+        _G.halfreepass = HFPValue;
+	end,
+})
+
+
+task.spawn(function()
+    while wait() do
+        if _G.halfreepass then
+            game:GetService("ReplicatedStorage").Functions.HalloweenPass:InvokeServer("normal",1)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.HalloweenPass:InvokeServer("normal",2)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.HalloweenPass:InvokeServer("normal",3)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.HalloweenPass:InvokeServer("normal",4)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.HalloweenPass:InvokeServer("normal",5)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.HalloweenPass:InvokeServer("normal",6)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.HalloweenPass:InvokeServer("normal",7)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.HalloweenPass:InvokeServer("normal",8)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.HalloweenPass:InvokeServer("normal",9)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.HalloweenPass:InvokeServer("normal",10)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.HalloweenPass:InvokeServer("normal",11)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.HalloweenPass:InvokeServer("normal",12)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.HalloweenPass:InvokeServer("normal",13)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.HalloweenPass:InvokeServer("normal",14)
+            wait(0.5)
+        end
+    end
+end)
+
+
+local Toggle = Tab:CreateToggle({
+	Name = "Auto Claim Halloween Premium pass",
+	CurrentValue = false,
+	Flag = "AutoHalPremiumPass",
+	Callback = function(HPPValue)
+        _G.halprempass = HPPValue;
+	end,
+})
+
+task.spawn(function()
+    while wait() do
+        if _G.halprempass then
+            game:GetService("ReplicatedStorage").Functions.HalloweenPass:InvokeServer("premium",1)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.HalloweenPass:InvokeServer("premium",2)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.HalloweenPass:InvokeServer("premium",3)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.HalloweenPass:InvokeServer("premium",4)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.HalloweenPass:InvokeServer("premium",5)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.HalloweenPass:InvokeServer("premium",6)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.HalloweenPass:InvokeServer("premium",7)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.HalloweenPass:InvokeServer("premium",8)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.HalloweenPass:InvokeServer("premium",9)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.HalloweenPass:InvokeServer("premium",10)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.HalloweenPass:InvokeServer("premium",11)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.HalloweenPass:InvokeServer("premium",12)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.HalloweenPass:InvokeServer("premium",13)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.HalloweenPass:InvokeServer("premium",14)
+            wait(0.5)
+        end
+    end
+end)
+
+
+
+
+
+local Tab = Window:CreateTab("World Teleport")
+
+
+local worlds = game:GetService("Workspace").Scripts.TeleportTo:GetChildren()
+
+local worldsTable = {}
+
+for i,v in ipairs(worlds) do
+    if v:IsA("Part") then
+        table.insert(worldsTable, v.Name)
+    end
+end
+
+local Dropdown = Tab:CreateDropdown({
+	Name = "Select World",
+	Options = worldsTable,
+	CurrentOption = " ",
+	Callback = function(WorldV)
+        _G.world = WorldV;
+	end,
+})
+
+local Button = Tab:CreateButton({
+	Name = "Teleport To Selected World",
+	Callback = function()
+        hrp.CFrame = game:GetService("Workspace").Scripts.TeleportTo[_G.world].CFrame
+	end,
+})
+
+local portals = game:GetService("Workspace").Scripts.Portals:GetDescendants()
+
+local Button = Tab:CreateButton({
+	Name = "Unlock All Maps",
+	Callback = function()
+                for i,v in ipairs(portals) do
+            if v.Name == "Unlocked" then
+                v.Value = true;
+            end
+        end
+	end,
+})
+
+local Tab = Window:CreateTab("Achivements")
+
+local Toggle = Tab:CreateToggle({
+	Name = "Auto Claim All Achivements",
+	CurrentValue = false,
+	Flag = "AutoClaimAchivements",
+	Callback = function(ACACValue)
+        _G.autoclaimachivements = ACACValue;
+	end,
+})
+
+task.spawn(function()
+    while wait() do
+        if _G.autoclaimachivements then
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.Achievements:InvokeServer(1)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.Achievements:InvokeServer(2)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.Achievements:InvokeServer(3)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.Achievements:InvokeServer(4)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.Achievements:InvokeServer(5)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.Achievements:InvokeServer(6)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.Achievements:InvokeServer(7)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.Achievements:InvokeServer(8)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.Achievements:InvokeServer(9)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.Achievements:InvokeServer(10)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.Achievements:InvokeServer(11)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.Achievements:InvokeServer(12)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.Achievements:InvokeServer(13)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.Achievements:InvokeServer(14)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.Achievements:InvokeServer(16)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.Achievements:InvokeServer(17)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.Achievements:InvokeServer(18)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.Achievements:InvokeServer(19)
+            wait(0.5)
+            game:GetService("ReplicatedStorage").Functions.Achievements:InvokeServer(20)
+            wait(0.5)
+        end
+    end
+end)
+
+
+
+
+local Tab = Window:CreateTab("Potions")
+
+local Dropdown = Tab:CreateDropdown({
+	Name = "Select Potion Amount",
+	Options = {1, 10, 100},
+	CurrentOption = " ",
+	Flag = "PotDropdown",
+	Callback = function(DropPot)
+        _G.potamount = DropPot;
+	end,
+})
+
+
+
+local Toggle = Tab:CreateToggle({
+	Name = "Auto Buy Click Potions",
+	CurrentValue = false,
+	Flag = "AutoClickPot",
+	Callback = function(P1Value)
+        _G.pottog1 = P1Value
+	end,
+})
+
+task.spawn(function()
+    while wait() do
+        if _G.pottog1 then
+            if _G.potamount ~= nil then
+                game:GetService("ReplicatedStorage").Events.Potion:FireServer("x2Clicks",(_G.potamount))
+            end
+        end
+    end
+end)
+
+
+
+local Toggle = Tab:CreateToggle({
+	Name = "Auto Buy Gem Potions",
+	CurrentValue = false,
+	Flag = "AutoGemPot",
+	Callback = function(P2Value)
+        _G.pottog2 = P2Value
+	end,
+})
+
+task.spawn(function()
+    while wait() do
+        if _G.pottog2 then
+            if _G.potamount ~= nil then
+                game:GetService("ReplicatedStorage").Events.Potion:FireServer("x2Gems",(_G.potamount))
+            end
+        end
+    end
+end)
+
+
+
+local Toggle = Tab:CreateToggle({
+	Name = "Auto Buy Luck Potions",
+	CurrentValue = false,
+	Flag = "AutoLuckPot",
+	Callback = function(P3Value)
+        _G.pottog3 = P3Value
+	end,
+})
+
+task.spawn(function()
+    while wait() do
+        if _G.pottog3 then
+            if _G.potamount ~= nil then
+                game:GetService("ReplicatedStorage").Events.Potion:FireServer("x2Luck",(_G.potamount))
+            end
+        end
+    end
+end)
+
+
+
+local Toggle = Tab:CreateToggle({
+	Name = "Auto Buy Rebirth Potions",
+	CurrentValue = false,
+	Flag = "AutoRebirthPot",
+	Callback = function(P4Value)
+        _G.pottog4 = P4Value
+	end,
+})
+
+task.spawn(function()
+    while wait() do
+        if _G.pottog4 then
+            if _G.potamount ~= nil then
+                game:GetService("ReplicatedStorage").Events.Potion:FireServer("x2Rebirths",(_G.potamount))
+            end
+        end
+    end
+end)
+
+
+
+local Toggle = Tab:CreateToggle({
+	Name = "Auto Buy Pet Exp Potions",
+	CurrentValue = false,
+	Flag = "AutoPetXpPot",
+	Callback = function(P5Value)
+        _G.pottog5 = P5Value
+	end,
+})
+
+task.spawn(function()
+    while wait() do
+        if _G.pottog5 then
+            if _G.potamount ~= nil then
+                game:GetService("ReplicatedStorage").Events.Potion:FireServer("x2PetXP",(_G.potamount))
+            end
+        end
+    end
+end)
+
+
+
+local Toggle = Tab:CreateToggle({
+	Name = "Auto Buy Hatch Speed Potions",
+	CurrentValue = false,
+	Flag = "AutoHatchSpeedPot",
+	Callback = function(P6Value)
+        _G.pottog6 = P6Value
+	end,
+})
+
+task.spawn(function()
+    while wait() do
+        if _G.pottog6 then
+            if _G.potamount ~= nil then
+                game:GetService("ReplicatedStorage").Events.Potion:FireServer("x2HatchSpeed",(_G.potamount))
+            end
+        end
+    end
+end)
+
+
+
+
+local Tab = Window:CreateTab("Misc")
+
+local Slider = Tab:CreateSlider({
+	Name = "Walk Speed Changer",
+	Range = {100, 500},
+	Increment = 10,
+	Suffix = "Speed",
+	CurrentValue = 100,
+	Flag = "WalkSpeed",
+	Callback = function(WSValue)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = WSValue;
+	end,
+})
+
+
+local Label = Tab:CreateLabel("I Suggest Use this feature since its op LOL")
+
+local Toggle = Tab:CreateToggle({
+	Name = "Auto Best World Boost",
+	CurrentValue = false,
+	Flag = "WorldBoost", 
+	Callback = function(ABWValue)
+        _G.autoworldboost = ABWValue;
+	end,
+})
+
+task.spawn(function()
+    while wait() do
+        if _G.autoworldboost then
+            game:GetService("ReplicatedStorage").Events.WorldBoost:FireServer("Halloween")
+            wait()
+        end
+    end
+end)
+
+local Toggle = Tab:CreateToggle({
+	Name = "Auto Spin Wheel",
+	CurrentValue = false,
+	Flag = "Spin",
+	Callback = function(ASValue)
+        _G.autospin = ASValue;
+	end,
+})
+
+task.spawn(function()
+    while wait() do
+        if _G.autospin then
+            wait(1)
+            game:GetService("ReplicatedStorage").Functions.Spin:InvokeServer()
+            wait(4)
+        end
+    end
+end)
+
+local Button = Tab:CreateButton({
+	Name = "Execute Anti Afk Script",
+	Callback = function()
+        loadstring(game:HttpGet(('https://raw.githubusercontent.com/RTrade/Voidz/main/Protected%20(12).lua'),true))()
+	end,
+})
+
+local Label = Tab:CreateLabel("Please Turn Off Everything Before Destroying The Script")
+
+local Button = Tab:CreateButton({
+	Name = "Destroy Script",
+	Callback = function()
+		Rayfield:Destroy()
+	end,
+})
+
+
+local Tab = Window:CreateTab("Credits")
+
+local Label = Tab:CreateLabel("Credits to : !KatagiriYuuchi#7765,Roge#4087")
+
+local Label = Tab:CreateLabel("Join My Discord: https://discord.gg/vEQDXpeX")
+
+local Button = Tab:CreateButton({
+	Name = "Copy Discord Link",
+	Callback = function()
+        setclipboard("https://discord.gg/vEQDXpeX")
+        wait(0.05)
+        Rayfield:Notify("Success","Successfully Copied Discord Link",10010348543) -- (t,c,image)
+	end,
+})
+
