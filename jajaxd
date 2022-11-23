@@ -9,7 +9,7 @@ local Window = Rayfield:CreateWindow({
 		Enabled = true,
 		FileName = "Verny Hub, Rebirth Champs X"
 	},
-	KeySystem = true, -- Set this to true to use our key system
+	KeySystem = false, -- Set this to true to use our key system
 	KeySettings = {
 		Title = "Verny Hub",
 		Subtitle = "Key System",
